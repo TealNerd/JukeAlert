@@ -18,6 +18,7 @@ import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -462,7 +463,7 @@ public class JukeAlertListener implements Listener {
 
 	private void handleSnitchEntry(Player player) {
 
-		if (vanishNoPacket.isPlayerInvisible(player) || player.hasPermission("jukealert.vanish")) {
+		if (vanishNoPacket.isPlayerInvisible(player) || player.hasPermission("jukealert.vanish") || player.getGameMode() == GameMode.SPECTATOR) {
 			return;
 		}
 		UUID accountId = player.getUniqueId();
